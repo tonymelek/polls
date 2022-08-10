@@ -1,0 +1,58 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\Tony-G6\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js init
+
+PATH: 
+  C:\Python\Scripts\;C:\Python\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files\nodejs\;C:\Program Files\Java\jdk-16\bin;C:\Users\Tony-G6\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Tony-G6\AppData\Local\GitHubDesktop\bin;C:\Users\Tony-G6\AppData\Roaming\npm
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  12.18.3
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: canceled
+      at Interface.<anonymous> (C:\Users\Tony-G6\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:136216:13)
+      at Interface.emit (events.js:315:20)
+      at Interface._ttyWrite (readline.js:868:16)
+      at ReadStream.onkeypress (readline.js:205:10)
+      at ReadStream.emit (events.js:315:20)
+      at emitKeys (internal/readline/utils.js:335:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (readline.js:1137:36)
+      at ReadStream.emit (events.js:315:20)
+      at addChunk (_stream_readable.js:295:12)
+
+npm manifest: 
+  {
+    "name": "Psalmody",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/tonymelek/Psalmody.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/tonymelek/Psalmody/issues"
+    },
+    "homepage": "https://github.com/tonymelek/Psalmody#readme",
+    "dependencies": {
+      "webpack": "^5.37.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

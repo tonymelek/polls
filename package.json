@@ -1,0 +1,23 @@
+{
+  "name": "Psalmody",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tonymelek/Psalmody.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tonymelek/Psalmody/issues"
+  },
+  "homepage": "https://github.com/tonymelek/Psalmody#readme",
+  "dependencies": {
+    "webpack": "^5.37.1"
+  }
+}
