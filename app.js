@@ -20,13 +20,14 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
-
+const errorText = "Topics should be at least two words"
 const app = {
     data() {
         return {
             topicName: '',
             topics: [],
-            selectedTopic: null
+            selectedTopic: null,
+            error: ''
         }
 
     },
@@ -38,7 +39,12 @@ const app = {
     methods: {
         async addnNewTopic(e) {
             e.preventDefault();
+            this.error = '';
             //this.topics.push({ name: this.topicName, votes: 0 });
+            if (this.topicName.trim().split(' ').length < 2) {
+                this.topicName = '';
+                return this.error = errorText;
+            }
             await setDoc(doc(db, "polls", new Date().toISOString()), { name: this.topicName, votes: 0 });
             this.topicName = '';
         },

@@ -19,6 +19,7 @@
         <label for="topicName">إقترح موضوعات للمناقشة في الإجتماع ، أدخل موضوع  جديد ثم إضغط Enter </label> 
         <form @submit="addnNewTopic">
             <input class="form-control" id="topicName" type="text" v-model="topicName"/>
+            <p class="my-1 text-danger">{{error}}</p>
             <button class="btn btn-primary my-2">أضف موضوع جديد </button>
         </form>   
         <br>
