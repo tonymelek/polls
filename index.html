@@ -61,7 +61,10 @@
                 </div>
 
                 <br>
-                <button class="btn btn-primary my-2">Submit</button>
+                <p class="text-danger">{{error}}</p>
+                <p class="text-success">{{success}}</p>
+
+                <button class="btn btn-primary my-2" :class="hideSubmit?'d-none':'d-block'">Submit</button>
             </form>
 
 

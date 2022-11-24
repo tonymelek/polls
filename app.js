@@ -20,14 +20,18 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
-const errorText = "Topics should be at least two words"
+const errorText = "Error: 1 or more questions not answered "
+const successText = "Success: your vote has been added"
 const app = {
     data() {
         return {
             q1: '',
             q2: '',
             q3: '',
-            responses: []
+            responses: [],
+            error: '',
+            success: !!localStorage.getItem('christmas-party') ? 'You have already voted' : '',
+            hideSubmit: !!localStorage.getItem('christmas-party')
         }
 
     },
@@ -55,23 +59,36 @@ const app = {
         }
     },
     methods: {
-        addResponse(e) {
+        async addResponse(e) {
             e.preventDefault();
-            if (!this.q1 || !this.q2 || !this.q3) return console.log('invalid');
-            this.responses.push({ q1: this.q1, q2: this.q2, q3: this.q3 })
-        }
+            if (!this.validate()) return;
+            await setDoc(doc(db, "christmas-party", new Date().toISOString()), { q1: this.q1, q2: this.q2, q3: this.q3 });
+            localStorage.setItem('christmas-party', 'voted')
+            this.error = ''
+            this.success = successText
+            this.hideSubmit = true
+        },
+        validate() {
+            if (!this.q1 || !this.q2 || !this.q3) {
+                this.error = errorText;
+                return false
+            }
+            return true;
+        },
     },
     mounted() {
-        const q = query(collection(db, "polls"));
+        const q = query(collection(db, "christmas-party"));
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
-            const topics = [];
+            const responses = [];
+            console.log(querySnapshot);
             querySnapshot.forEach((doc) => {
-                topics.push(doc.data());
+                responses.push(doc.data());
             });
-            this.topics = topics;
+            this.responses = responses;
 
         });
     }
 
 }
+
 Vue.createApp(app).mount('#app')
