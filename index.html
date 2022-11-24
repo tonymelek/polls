@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="rtl" lang="ar">
+<html dir="ltr" lang="ar">
 
 <head>
     <meta charset="UTF-8">
@@ -16,27 +16,61 @@
 <body>
     <div id="app">
         <div class="container my-2">
-        <label for="topicName">إقترح موضوعات للمناقشة في الإجتماع ، أدخل موضوع  جديد ثم إضغط Enter </label> 
-        <form @submit="addnNewTopic">
-            <input class="form-control" id="topicName" type="text" v-model="topicName"/>
-            <p class="my-1 text-danger">{{error}}</p>
-            <button class="btn btn-primary my-2">أضف موضوع جديد </button>
-        </form>   
-        <br>
-        <ol>
-            <li v-for="(topic,index) in topics" :key="index" >
-                <!-- <input type="radio" :value="index" class="mx-2" v-model="selectedTopic"> -->
-            {{topic.name}}
-            </li>
+            <h2 class="text-center">Christmas Trip</h2>
+            <form @submit="addResponse">
+                <p>Choose preferred trip day</p>
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input id="q1-ch1" class="btn-check" type="radio" v-model="q1" value="26Dec" />
+                    <label for="q1-ch1" class="btn btn-outline-primary">26 December <sup
+                            class="badge bg-secondary">{{q1c.ch1}}</sup>
+                    </label>
 
-        </ol>
-   
-        <!-- <button v-if="topics.length>0" class="btn btn-primary" @click="vote($event,selectedTopic)">vote</button> -->
-        </div>
-        </div>
+                    <input id="q1-ch2" class="btn-check" type="radio" v-model="q1" value="27Dec" />
+                    <label for="q1-ch2" class="btn btn-outline-primary">27 December <sup
+                            class="badge bg-secondary">{{q1c.ch2}}
+                        </sup>
+                    </label>
 
-        <script src="./vue.js"></script>
-        <script src="./app.js" type="module"></script>
+                </div>
+                <p>Choose preferred beach</p>
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input id="q2-ch1" class="btn-check" type="radio" v-model="q2" value="Rye" />
+                    <label for="q2-ch1" class="btn btn-outline-primary">Rye <sup class="badge bg-secondary">
+                            {{q2c.ch1}}
+                        </sup></label>
+
+                    <input id="q2-ch2" class="btn-check" type="radio" v-model="q2" value="Dormana" />
+                    <label for="q2-ch2" class="btn btn-outline-primary">Dormana <sup
+                            class="badge bg-secondary">{{q2c.ch2}}</sup></label>
+
+                    <input id="q2-ch3" class="btn-check" type="radio" v-model="q2" value="Rosebud" />
+                    <label for="q2-ch3" class="btn btn-outline-primary">Rosebud <sup class="badge bg-secondary">
+                            {{q2c.ch3}}</sup></label>
+
+                </div>
+                <p>No buses or meals will be available, only $5.00 fee for snacks per adult (kids free)</p>
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input id="q3-ch1" class="btn-check" type="radio" v-model="q3" value="Yes" />
+                    <label for="q3-ch1" class="btn btn-outline-primary">Yes <sup
+                            class="badge bg-secondary">{{q3c.ch1}}</sup></label>
+
+                    <input id="q3-ch2" class="btn-check" type="radio" v-model="q3" value="No" />
+                    <label for="q3-ch2" class="btn btn-outline-primary"> No <sup
+                            class="badge bg-secondary">{{q3c.ch2}}</sup></label>
+
+                </div>
+
+                <br>
+                <button class="btn btn-primary my-2">Submit</button>
+            </form>
+
+
+            <!-- <button v-if="topics.length>0" class="btn btn-primary" @click="vote($event,selectedTopic)">vote</button> -->
+        </div>
+    </div>
+
+    <script src="./vue.js"></script>
+    <script src="./app.js" type="module"></script>
 </body>
 
 </html>

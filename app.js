@@ -24,34 +24,41 @@ const errorText = "Topics should be at least two words"
 const app = {
     data() {
         return {
-            topicName: '',
-            topics: [],
-            selectedTopic: null,
-            error: ''
+            q1: '',
+            q2: '',
+            q3: '',
+            responses: []
         }
 
     },
     computed: {
-        totalVotes() {
-            return this.topics.reduce((a, b) => a + b)
+        totalResponses() {
+            return this.responses.length;
+        },
+        q1c() {
+            return {
+                ch1: this.responses.filter(r => r.q1 === '26Dec').length,
+                ch2: this.responses.filter(r => r.q1 === '27Dec').length
+            }
+        }, q2c() {
+            return {
+                ch1: this.responses.filter(r => r.q2 === 'Rye').length,
+                ch2: this.responses.filter(r => r.q2 === 'Dormana').length,
+                ch3: this.responses.filter(r => r.q2 === 'Rosebud').length,
+            }
+        },
+        q3c() {
+            return {
+                ch1: this.responses.filter(r => r.q3 === 'Yes').length,
+                ch2: this.responses.filter(r => r.q3 === 'No').length,
+            }
         }
     },
     methods: {
-        async addnNewTopic(e) {
+        addResponse(e) {
             e.preventDefault();
-            this.error = '';
-            //this.topics.push({ name: this.topicName, votes: 0 });
-            if (this.topicName.trim().split(' ').length < 2) {
-                this.topicName = '';
-                return this.error = errorText;
-            }
-            await setDoc(doc(db, "polls", new Date().toISOString()), { name: this.topicName, votes: 0 });
-            this.topicName = '';
-        },
-        vote(e, index) {
-            e.preventDefault();
-            this.topics[index].votes++;
-            this.selectedTopic = null;
+            if (!this.q1 || !this.q2 || !this.q3) return console.log('invalid');
+            this.responses.push({ q1: this.q1, q2: this.q2, q3: this.q3 })
         }
     },
     mounted() {
