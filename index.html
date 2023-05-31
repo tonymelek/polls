@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html dir="rtl" lang="ar">
+<html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Family Meeting </title>
+    <title>Fete Pre Orders</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -14,29 +14,28 @@
 </head>
 
 <body>
-    <div id="app">
-        <div class="container my-2">
-        <label for="topicName">إقترح موضوعات للمناقشة في الإجتماع ، أدخل موضوع  جديد ثم إضغط Enter </label> 
-        <form @submit="addnNewTopic">
-            <input class="form-control" id="topicName" type="text" v-model="topicName"/>
-            <p class="my-1 text-danger">{{error}}</p>
-            <button class="btn btn-primary my-2">أضف موضوع جديد </button>
-        </form>   
-        <br>
-        <ol>
-            <li v-for="(topic,index) in topics" :key="index" >
-                <!-- <input type="radio" :value="index" class="mx-2" v-model="selectedTopic"> -->
-            {{topic.name}}
-            </li>
-
-        </ol>
-   
-        <!-- <button v-if="topics.length>0" class="btn btn-primary" @click="vote($event,selectedTopic)">vote</button> -->
-        </div>
+    <div id="app" class="container">
+        <div class=" my-3 w-100 d-flex justify-content-center">
+            <input type="button" value="-" @click="decrementOrder">
+            <input type="number" v-model="currentOrderNumber" class="text-center">
+            <input type="button" value="+" @click="incrementOrder">
         </div>
 
-        <script src="./vue.js"></script>
-        <script src="./app.js" type="module"></script>
+        <div class="card p-3">
+            <h2 class="text-center text-primary">{{currentOrder.Name}}-{{currentOrder.Mobile}}</h2>
+            <p v-for="item in currentOrder.orderItems">
+                {{item.cat}}-{{item.item}} *{{item.qty}}
+            </p>
+            <p>Date: {{currentOrder.Date}}</p>
+            <p>Time:{{currentOrder.Time}}</p>
+            <p>{{currentOrder.Status}}</p>
+
+
+        </div>
+    </div>
+
+    <script src="./vue.js"></script>
+    <script src="./app.js" type="module"></script>
 </body>
 
 </html>
